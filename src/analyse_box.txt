@@ -1,0 +1,47 @@
+Bouygues Telecom:
+  ->Positifs:
+    Interface très user friendly et simple.
+    Donne des infos sur l'utilisation hardware de la box.
+    Permet un accès à distance en un clic.
+  ->Négatifs:
+    Interface qui manque d'options et peu adapté pour des utilisateurs avancé.
+Free:
+  ->Positifs:
+    Interface avec une grille d'icon ultra évidente pour configurer des services.
+    Propose in service VPN pour accèder au réseau à distance.
+    Box qui propose le plus de service en plus (VPN, Partage de fichier, VM)
+  ->Négatifs:
+    Interface qui montre peut sur la config actuelle et l'état de la box et du réseau.
+sfr:
+  ->Positifs:
+    Interface claire pour afficher la config actuelle avec simple bouton editer pour la modifier.
+    Interface qui permet beaucoup de configuration de la box(utile pour un utilisateur avancé).
+    Interface qui propose des options à activer en un clic.
+  ->Négatifs:
+    Couleur de certaine box très agrssive pour les yeux
+    Rangement de certaine configuration peu intuitif avec par exemple le PAT seul dans la partie sécurité.
+    L'interface dirige mal l'utilisateur pour aller modifier les services désiré.
+
+Point à rajouter:
+  DHCPv6, support du protocol ipv6.
+  PAT, possiblité de faire du port forwarding.
+  DMZ, configuration possible d'une dmz pour héberger des services comme un server http.
+  VPN.
+  Wifi pour invité.
+  Priorisation de certain traffic(jeux vidéo, streaming...).
+  Gestion d'un pare feu ipv4/ipv6.
+
+  interfaces -> Menu latéral qui permet d'acceder à la config de chaque éléments/fonctionnalités.
+                Possiblité d'avoir un mode avancé.
+                Page appareils qui liste tous les appareils du réseau.
+                La plus épuré possible(trop d'info = mauvaise exp utilisateur)
+                Page d'accueil qui affiche des informations sur la config actuelle avec la possiblité d'être redirigé vers le menu de config d'un paramètre.
+                Des "interrupteur" pour activer/désactiver rapidement un service(ce qui gris ses formulaires de config).
+                Attribution d'un nom de domaine pour chaque machine locale.
+                Ajouter de simple "boite d'information" pour aider la compréhension de certaine fonctionnalité.
+
+Point à éviter:
+  Ne pas donner à l'utilisateur la possiblité de configurer en détails sa box.
+
+  interface ->  Avoir un surplus d'informations qui rend l'interface illisible
+                Ne pas ranger l'interface comme celle de sfr. Les catégories sont souvent mal comprise.

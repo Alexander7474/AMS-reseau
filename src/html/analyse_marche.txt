@@ -1,0 +1,36 @@
+Orange:
+  ->Positifs:
+    Bonne qualité des raccordements à la fibre et bonne réponse au incident.
+    Livebox avec des fonctionnalité avancé comme le wifi 7 et le support ipv6.
+    
+  ->Négatifs:
+    Prix plus élévés que la concurrence.
+Bouygues Telecom:
+  ->Positifs:
+    Bon rapport qualité prix.
+    Support d'ipv6.
+  ->Négatifs:
+    Manque de SAV et d'intervention technique en cas de problème.
+    Interface peu accessible.
+Free:
+  ->Positifs:
+    Bon rapport qualité prix.
+    
+  ->Négatifs:
+    Selon l'arcep Free fait des raccordements de mauvaise qualité et n'a pas les meilleurs délai d'intervention
+
+
+Point à rajouter:
+  DHCPv6, support du protocol ipv6.
+  PAT, possiblité de faire du port forwarding.
+  DMZ, configuration possible d'une dmz pour héberger des services comme un server http.
+  Wifi pour invité.
+  Priorisation de certain traffic(jeux vidéo, streaming...).
+  Gestion d'un pare feu ipv4/ipv6.
+
+  interfaces -> Menu latéral qui permet d'acceder à la config de chaque éléments/fonctionnalités.
+                Possiblité d'avoir un mode avancé
+
+Point à éviter:
+  Mauvaise interface d'administration.
+  Ne pas donner à l'utilisateur la possiblité de configurer en détails sa box.
