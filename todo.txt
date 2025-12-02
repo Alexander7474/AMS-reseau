@@ -1,0 +1,7 @@
+formulaire pour changer l'ip
+formulaire de configuration du reseau/DHCP 
+formulaire config DNS
+option de test de debit
+
+script => interaction direct avec les services et la machine
+php => formulaire et edition de fichier
