@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
 $racine_path = "../../";
 $page_reseau = true;
 
@@ -50,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_dhcp'])){
 
 include($racine_path."src/templates/header.php");
 include($racine_path."src/templates/navigation.php");
-include($racine_path."src/templates/network-form.php");
+include($racine_path."src/templates/network.php");
 include($racine_path."src/templates/footer.php");
 
 ?>

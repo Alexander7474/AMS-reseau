@@ -1,4 +1,5 @@
 <?php 
+session_start();
 $racine_path = "../../";
 $page_dns = true;
 

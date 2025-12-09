@@ -1,7 +1,7 @@
 :root {
-    --primary: #3578e5;      /* Bleu moderne pour les boutons */
-    --secondary: #2c2f33;    /* Gris très clair pour la navbar */
-    --hover: #285bb8;        /* Bleu plus sombre pour hover */
+    --primary: #8f5bff;      /* Violet néon moderne */
+    --secondary: #1b1c1f;    /* Noir graphite pour la navbar */
+    --hover: #6d3aff;        /* Violet plus intense pour hover */
 }
 
 body {
