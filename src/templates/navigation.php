@@ -5,11 +5,10 @@
     <a href="<?php echo $racine_path; ?>src/control/network.php" <?php if(isset($page_reseau)) { echo 'class="active"';}?>>Réseau</a>
     </li>
     <li>
-    <a href="<?php echo $racine_path; ?>src/control/dns.php" <?php if(isset($page_dns)) { echo 'class="active"';}?>>DNS</a>
+    <a href="<?php echo $racine_path; ?>src/control/dns.php" <?php if(isset($page_dns)) { echo 'class="active"';}?>>Nom de domaine</a>
     </li>
-        <li><a href="#">Wi-Fi</a></li>
+        <li><a href="#">Hébergement Web</a></li>
         <li><a href="#">Sécurité</a></li>
-        <li><a href="#">Périphériques</a></li>
         <li><a href="#">Paramètres</a></li>
     </ul>
       <!-- Mode avancé -->
