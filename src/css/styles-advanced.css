@@ -1,7 +1,7 @@
 :root {
-    --primary: #8f5bff;      /* Violet néon moderne */
+    --primary: #a238ff;      /* Violet néon moderne */
     --secondary: #1b1c1f;    /* Noir graphite pour la navbar */
-    --hover: #6d3aff;        /* Violet plus intense pour hover */
+    --hover: #c17aff;        /* Violet plus intense pour hover */
 }
 
 body {
@@ -10,6 +10,7 @@ body {
     display: flex;
     min-height: 100vh;
 }
+
 
 /* Menu de navigation */
 .sidebar {
@@ -20,6 +21,10 @@ body {
     height: 100vh;
     left: 0;
     top: 0;
+}
+
+.sidebar a {
+  text-decoration: none;
 }
 
 .logo {
@@ -97,7 +102,6 @@ p {
     border-radius: 8px;
     padding: 32px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
 }
 
 /* Formulaire */
@@ -178,7 +182,7 @@ p {
     margin-top: 32px;
 }
 
-.btn {
+.mybtn {
     padding: 12px 24px;
     font-size: 14px;
     font-weight: 600;
@@ -189,21 +193,31 @@ p {
     font-family: inherit;
 }
 
-.btn-primary {
+.mybtn-primary {
     background: var(--primary);
     color: white;
 }
 
-.btn-primary:hover {
+.mybtn-primary:hover {
     background: var(--hover);
 }
 
-.btn-secondary {
+.mybtn-secondary {
     background: #ecf0f1;
     color: #7f8c8d;
 }
 
-.btn-secondary:hover {
+.mybtn-secondary:hover {
     background: #dce0e1;
+}
+
+.mybtn-info {  
+  background-color: white; 
+  color: #7f8c8d;
+}
+
+.mybtn-info:hover {
+  background-color: white; 
+  color: #5F6869;
 }
 

@@ -22,6 +22,10 @@ body {
     top: 0;
 }
 
+.sidebar a {
+  text-decoration: none;
+}
+
 .logo {
     color: white;
     font-size: 20px;
@@ -97,7 +101,6 @@ p {
     border-radius: 8px;
     padding: 32px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
 }
 
 /* Formulaire */
@@ -178,7 +181,7 @@ p {
     margin-top: 32px;
 }
 
-.btn {
+.mybtn {
     padding: 12px 24px;
     font-size: 14px;
     font-weight: 600;
@@ -189,21 +192,30 @@ p {
     font-family: inherit;
 }
 
-.btn-primary {
+.mybtn-primary {
     background: var(--primary);
     color: white;
 }
 
-.btn-primary:hover {
+.mybtn-primary:hover {
     background: var(--hover);
 }
 
-.btn-secondary {
+.mybtn-secondary {
     background: #ecf0f1;
     color: #7f8c8d;
 }
 
-.btn-secondary:hover {
+.mybtn-secondary:hover {
     background: #dce0e1;
 }
 
+.mybtn-info {  
+  background-color: white; 
+  color: #7f8c8d;
+}
+
+.mybtn-info:hover {
+  background-color: white; 
+  color: #5F6869;
+}

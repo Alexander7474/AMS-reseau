@@ -10,8 +10,8 @@
     </div>
     <!-- Boutons d'action -->
     <div class="button-group">
-        <button type="reset" class="btn btn-secondary">Annuler</button>
-        <button type="submit" class="btn btn-primary" name="submit_dhcp">Enregistrer</button>
+        <button type="reset" class="mybtn mybtn-secondary">Annuler</button>
+        <button type="submit" class="mybtn mybtn-primary" name="submit_dhcp">Enregistrer</button>
     </div>
   </form>
 </div>

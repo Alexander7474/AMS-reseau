@@ -4,20 +4,14 @@ session_start();
 $racine_path = "../../";
 $page_reseau = true;
 
-//recup ip/mask 
-$output = shell_exec("/var/www/html/src/scripts/get-ip.sh");
-$output = explode('|' , $output);
-$ip3 = $output[2];
-$ip4 = $output[3];
-$mask3 = $output[6];
-$mask4 = $output[7];
-
+// traitement des formulaire
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_ip'])){
   $networkConfig = '/etc/network/interfaces';
   $tempConfig = $racine_path.'src/tmp/interfaces.temp';
 
-  $newIp = $_POST["ip1"].".".$_POST["ip2"].".".$_POST["ip3"].".".$_POST["ip4"];
-  $newMask = $_POST["mask1"].".".$_POST["mask2"].".".$_POST["mask3"].".".$_POST["mask4"];
+  // TODO -- empêcher les mauvaises entrées
+  $newIp = "192.168.".$_POST["ip3"].".".$_POST["ip4"];
+  $newMask = "255.255.".$_POST["mask3"].".".$_POST["mask4"];
 
   if (!copy($networkConfig, $tempConfig)) {
       echo "failed to copy $networkConfig...\n";
@@ -40,15 +34,59 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_ip'])){
 
   file_put_contents($tempConfig, $section);
 
+  // mise a jour de eth1
   $output = shell_exec("sudo /var/www/html/src/scripts/cfg-eth1.sh");
-}
 
+  // changement d'ip pour le sousdomaine box 
+  shell_exec("sudo /var/www/html/src/scripts/rm-subdomain.sh box");
+  shell_exec("sudo /var/www/html/src/scripts/add-subdomain.sh box ".$newIp);
+}
 
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_dhcp'])){
-  $dhcp_client = $_POST["dhcp_client"];
-  $output = shell_exec("sudo /var/www/html/src/scripts/cfg-dhcp.sh ".$dhcp_client); // TODO-- sanitize user entry
-  echo $output; 
+  $dhcpClient = $_POST["dhcp_client"];
+  $output = shell_exec("sudo /var/www/html/src/scripts/cfg-dhcp.sh ".$dhcpClient); // TODO-- sanitize user entry (report 001) unpached
 }
+
+if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_dhcp_advanced'])){
+  $rangeA = "192.168.".$_POST["range3a"].".".$_POST["range4a"];
+  $rangeB = "192.168.".$_POST["range3b"].".".$_POST["range4b"];
+  $pingCheck = "false";
+  if(isset($_POST["conflict_detection"]) && $_POST['conflict_detection'] == "ok"){
+    $pingCheck = "true";
+  }
+  $output = shell_exec("sudo /var/www/html/src/scripts/cfg-dhcp-advanced.sh ".$rangeA." ".$rangeB." ".$pingCheck);
+}
+
+// reset default 
+if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_reset'])){
+  $output = shell_exec("sudo /var/www/html/src/scripts/cfg-dhcp.sh 250");
+}
+
+//recup ip/mask 
+$output = shell_exec("/var/www/html/src/scripts/get-ip.sh");
+$output = explode('|' , $output);
+// TODO -- optimiser
+$ip3 = explode('.' , $output[0])[2];
+$ip4 = explode('.' , $output[0])[3];
+$mask3 = explode('.' , $output[1])[2];
+$mask4 = explode('.' , $output[1])[3];
+$ip = $output[0];
+$mask = $output[1];
+$network = $output[2];
+
+// recup range dhcp 
+$output = shell_exec("/var/www/html/src/scripts/get-dhcp.sh");
+$output = explode('|' , $output);
+// TODO -- optimiser
+$range3a = explode('.' , $output[0])[2];
+$range4a = explode('.' , $output[0])[3];
+$range3b = explode('.' , $output[1])[2];
+$range4b = explode('.' , $output[1])[3];
+$rangea = $output[0];
+$rangeb = $output[1];
+$totalAddr = $output[2];
+$output[3] = preg_replace('/\s+/u', '', $output[3]); // remove space
+$conflictDetection = $output[3];
 
 include($racine_path."src/templates/header.php");
 include($racine_path."src/templates/navigation.php");

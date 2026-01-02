@@ -5,46 +5,45 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <p>Paramètres DNS de votre box</p>
-        <div class="card">
-          <form id="dns-form" method="POST">
-            <label class="form-label">Nom du domaine</label>
-            <input type="text" class="text-input" name="domain_name">
-              <!-- Boutons d'action -->
-              <div class="button-group">
-                <button type="reset" class="btn btn-secondary">Annuler</button>
-                <button type="submit" class="btn btn-primary" name="submit_ip">Enregistrer</button>
-              </div>
-          </form>
-        </div>
+        <?php include($racine_path."src/templates/form/zone-dns.php");?>
       </div>
       <div class="col">
         <p>Configuration DNS actuelle</p>
         <div class="card">
-          <p class="config-info">Nom de domaine: TODO</p>
+        <p class="config-info">Nom du domaine: <?php echo $zoneDns; ?></p>
         </div>
       </div>
     </div>
     <br>
     <div class="row">
-      <div class="col">        
-      <p>Ajout d'un nom de domaine</p>
-        <div class="card">
-          <form id="add-dns-form" method="POST">
-            <label class="form-label">Ajouter un sous domaine</label>
-            <input type="text" class="text-input" name="domain_name">
-              <!-- Boutons d'action -->
-              <div class="button-group">
-                <button type="reset" class="btn btn-secondary">Annuler</button>
-                <button type="submit" class="btn btn-primary" name="submit_ip">Ajouter</button>
-              </div>
-          </form>
-        </div>
+      <div class="col">  
+        <?php include($racine_path."src/templates/form/add-subdomain.php");?>      
       </div>
       <div class="col">
-        <p>Liste des noms de domaines ajouté(s)</p>
+        <p>Liste des sous domaines ajouté(s)</p>
         <div class="card">
-          <p class="config-info">TODO</p>
+        <?php 
+          foreach ($subdomains as $sub){
+          $name = explode('/', $sub)[0];
+          $ip = explode('/', $sub)[1];
+          $name = preg_replace('/\s+/u', '', $name);
+          if($name == "box"){
+            echo '
+            <p class="config-info">'.$name.'.'.$zoneDns.' -> '.$ip.'</p>
+            ';
+          }else{
+            echo '
+            <form method="POST">
+              <div class="button-group">
+                <p class="config-info">'.$name.'.'.$zoneDns.' -> '.$ip.'</p>
+                <input type="text" value="'.$name.'" name="subdomain_name" hidden>
+                <button type="submit" class="mybtn mybtn-secondary" name="rm_subdomain">Supprimer</button>
+              </div>
+            </form>
+            ';
+          }
+        }
+        ?>
         </div>
       </div>
     </div>

@@ -5,3 +5,19 @@ option de test de debit
 
 script => interaction direct avec les services et la machine
 php => formulaire et edition de fichier
+
+
+
+
+pour le rapport:
+->contexte
+->intro = positionnement du travail par rapport a un probleme
+->service proposé
+->conclure (perspective au second semestre)
+
+
+parler des idées non implémentés
+faire des captures d'écran (pas trop)
+
+TODO -- ajouter un script d'installation one shot(config sudoer, installation des packet, config server web, etc...)
+

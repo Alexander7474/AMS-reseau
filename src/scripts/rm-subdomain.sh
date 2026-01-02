@@ -7,5 +7,7 @@ if (( $# != 1 )); then
   echo "error: 1 arg needed (:subdomain)" >&2; exit 1
 fi
 
-sed -i "/^$1\b/d" "/etc/bind/db.alexandre.ceri.com"
+ZONE=$(/var/www/html/src/scripts/get-dns-zone.sh)
+
+sed -i "/^$1\b/d" "/etc/bind/db.$ZONE"
 systemctl restart bind9
