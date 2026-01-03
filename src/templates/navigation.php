@@ -1,5 +1,5 @@
 <nav class="sidebar d-flex flex-column">
-    <a href="/"><div class="logo">Administration</div></a>
+    <a href="/"><div class="logo">MyBox</div></a>
     <ul class="nav-menu">
     <li>
     <a href="<?php echo $racine_path; ?>src/control/network.php" <?php if(isset($page_reseau)) { echo 'class="active"';}?>>Réseau</a>
@@ -7,9 +7,15 @@
     <li>
     <a href="<?php echo $racine_path; ?>src/control/dns.php" <?php if(isset($page_dns)) { echo 'class="active"';}?>>Nom de domaine</a>
     </li>
-        <li><a href="#">Hébergement Web</a></li>
-        <li><a href="#">Sécurité</a></li>
-    <li><a href="#">Paramètres</a></li>
+    <li>
+    <a href="<?php echo $racine_path; ?>src/control/web.php" <?php if(isset($page_web)) { echo 'class="active"';}?>>Hébergement Web</a>
+    </li>
+    <li>
+    <a href="<?php echo $racine_path; ?>src/control/safety.php" <?php if(isset($page_safety)) { echo 'class="active"';}?>>Sécurité</a>
+    </li>
+    <li>
+    <a href="<?php echo $racine_path; ?>src/control/param.php" <?php if(isset($page_param)) { echo 'class="active"';}?>>Paramètres</a>
+    </li>
     <li>
     <a href="<?php echo $racine_path; ?>src/control/disconnect.php">Deconnexion</a>
     </li>

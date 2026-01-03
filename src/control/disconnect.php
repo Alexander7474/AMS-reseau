@@ -1,10 +1,6 @@
 <?php
 session_start();
-
-if (isset($_SESSION['authenticated'])) {
-  unset($_SESSION['authenticated']);
-}
-
+session_destroy();
 // Redirect back to previous page
 header("Location: " . "/src/control/login.php");
 exit;

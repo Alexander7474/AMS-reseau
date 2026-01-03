@@ -21,6 +21,14 @@ foreach ($hosts as &$host) {
 }
 unset($host);
 
+// recup des services en marche 
+$services = shell_exec("/var/www/html/src/scripts/get-services-up.sh");
+$services = explode('|', $services);
+foreach ($services as &$sv) {
+  $sv = explode('=', $sv);
+}
+unset($sv);
+
 include($racine_path."src/templates/header.php");
 include($racine_path."src/templates/navigation.php");
 include($racine_path."src/templates/index.php");
