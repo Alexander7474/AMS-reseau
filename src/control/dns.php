@@ -1,6 +1,11 @@
 <?php 
 session_start();
 $racine_path = "../../";
+
+include $racine_path."src/model/User.php";
+// refuse l'accès au utilisateur non connecté
+User::checkIfConnected();
+
 $page_dns = true;
 
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_zone_dns'])){

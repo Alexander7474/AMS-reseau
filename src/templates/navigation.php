@@ -9,7 +9,10 @@
     </li>
         <li><a href="#">Hébergement Web</a></li>
         <li><a href="#">Sécurité</a></li>
-        <li><a href="#">Paramètres</a></li>
+    <li><a href="#">Paramètres</a></li>
+    <li>
+    <a href="<?php echo $racine_path; ?>src/control/disconnect.php">Deconnexion</a>
+    </li>
     </ul>
       <!-- Mode avancé -->
     

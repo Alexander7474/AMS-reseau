@@ -1,7 +1,11 @@
 <?php 
 session_start();
-
 $racine_path = "../../";
+
+include $racine_path."src/model/User.php";
+// refuse l'accès au utilisateur non connecté
+User::checkIfConnected();
+
 $page_reseau = true;
 
 // traitement des formulaire
