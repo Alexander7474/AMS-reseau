@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_ip'])){
     $section[$interfaceKey+2] = "netmask ".$newMask."\n";
   }
 
-  $message = "#Config modifier par srcipt-ip.php\n";
+  $message = "#Config modifier par network.php\n";
   if(end($section) != $message){
     $section[] = $message;
   }

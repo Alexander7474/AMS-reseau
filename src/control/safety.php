@@ -8,8 +8,12 @@ User::checkIfConnected();
 
 $page_safety = true;
 
-if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
-}
+
+
+// recup configuration nat et sécurité
+$output = shell_exec("/var/www/html/src/scripts/get-nat.sh");
+$output = explode('|' , $output);
+$ipForward = $output[0];
 
 include($racine_path."src/templates/header.php");
 include($racine_path."src/templates/navigation.php");

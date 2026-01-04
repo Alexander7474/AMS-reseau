@@ -11,7 +11,10 @@
     <a href="<?php echo $racine_path; ?>src/control/web.php" <?php if(isset($page_web)) { echo 'class="active"';}?>>Hébergement Web</a>
     </li>
     <li>
-    <a href="<?php echo $racine_path; ?>src/control/safety.php" <?php if(isset($page_safety)) { echo 'class="active"';}?>>Sécurité</a>
+    <a href="<?php echo $racine_path; ?>src/control/safety.php" <?php if(isset($page_safety)) { echo 'class="active"';}?>>Internet et Sécurité</a>
+    </li>
+    <li>
+    <a href="<?php echo $racine_path; ?>src/control/forum.php" <?php if(isset($page_forum)) { echo 'class="active"';}?>>Forum</a>
     </li>
     <li>
     <a href="<?php echo $racine_path; ?>src/control/param.php" <?php if(isset($page_param)) { echo 'class="active"';}?>>Paramètres</a>

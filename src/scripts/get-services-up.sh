@@ -3,7 +3,11 @@
 # Vérifie que les services de 
 # la box sont en marche.
 
-services=("apache2" "ssh" "isc-dhcp-server" "bind9" "minecraft" "teamspeak")
+if [[ "$(cat "/proc/sys/net/ipv4/ip_forward")" = "1" ]]; then
+  echo "Accès Internet=1|"
+else
+  echo "Accès Internet=0|"
+fi
 
 if systemctl is-active --quiet "apache2"; then
   echo "Server HTTP=1|"
@@ -40,4 +44,3 @@ if systemctl is-active --quiet "teamspeak"; then
 else
   echo "Server Teamspeak=0"
 fi
-# TODO -- rajouter un check des services qui ne sont pas sur systemctl

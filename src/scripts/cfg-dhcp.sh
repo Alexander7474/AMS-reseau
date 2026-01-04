@@ -97,6 +97,12 @@ echo "allow-hotplug eth1" >> /etc/network/interfaces
 echo "iface eth1 inet static" >> /etc/network/interfaces
 echo "address ${addr_start}" >> /etc/network/interfaces
 echo "netmask ${mask}" >> /etc/network/interfaces
+echo "" >> /etc/network/interfaces
+echo "# FAI network" >> /etc/network/interfaces
+echo "allow-hotplug eth2" >> /etc/network/interfaces
+echo "iface eth2 inet static" >> /etc/network/interfaces
+echo "address 10.10.10.2" >> /etc/network/interfaces
+echo "netmask 255.255.255.0" >> /etc/network/interfaces
 
 systemctl restart isc-dhcp-server
 #changement d'address de la box
