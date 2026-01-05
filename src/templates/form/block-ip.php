@@ -1,6 +1,6 @@
 <p>Blocage d'une ip</p>
 <div class="card">
-  <form id="add-dns-form" method="POST">
+  <form method="POST">
     <div class="form-group" id="ip-block-form">
       <label class="form-label">Adresse IP</label>
       <div class="ip-input-group">

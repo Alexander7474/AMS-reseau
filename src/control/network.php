@@ -66,6 +66,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_reset'])){
   $output = shell_exec("sudo /var/www/html/src/scripts/cfg-dhcp.sh 250");
 }
 
+if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_toggle_dhcp'])){
+  $dhcpToggle = "0";
+  if(isset($_POST["dhcp"]) && $_POST['dhcp'] == "ok"){
+    $dhcpToggle = "1";
+  }
+  shell_exec("sudo /var/www/html/src/scripts/toggle-service.sh isc-dhcp-server ".$dhcpToggle);
+}
+
 //recup ip/mask 
 $output = shell_exec("/var/www/html/src/scripts/get-ip.sh");
 $output = explode('|' , $output);
@@ -89,8 +97,9 @@ $range4b = explode('.' , $output[1])[3];
 $rangea = $output[0];
 $rangeb = $output[1];
 $totalAddr = $output[2];
-$output[3] = preg_replace('/\s+/u', '', $output[3]); // remove space
 $conflictDetection = $output[3];
+$output[4] = preg_replace('/\s+/u', '', $output[4]); // remove space
+$dhcpStatus = $output[4];
 
 include($racine_path."src/templates/header.php");
 include($racine_path."src/templates/navigation.php");

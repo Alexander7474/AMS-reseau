@@ -11,6 +11,11 @@ ip_to_int() {
 
 ping_check=0
 
+status=0
+if systemctl is-active --quiet "isc-dhcp-server"; then
+  status=1
+fi
+
 while IFS= read -r line; do
   # Supprimer les lignes commentées
   line=${line%%#*}
@@ -30,6 +35,6 @@ while IFS= read -r line; do
 
     total=$((end_int - start_int + 1))
 
-    echo "$start_ip|$end_ip|$total|$ping_check"
+    echo "$start_ip|$end_ip|$total|$ping_check|$status"
   fi
 done < "$CONF"

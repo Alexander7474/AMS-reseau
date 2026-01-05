@@ -8,7 +8,13 @@ User::checkIfConnected();
 
 $page_param = true;
 
-if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])){
+if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['password2'])){
+  if($_POST['password'] == $_POST['password2']){
+    $user = new User($_POST['username'], $_POST['password']);
+    $user->save();
+  }else{
+    $errorChangeLogin = "Les deux mots de passe doivent être identique";
+  }
 }
 
 include($racine_path."src/templates/header.php");

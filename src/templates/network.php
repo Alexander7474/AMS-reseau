@@ -23,7 +23,29 @@ if(isset($_SESSION['advanced_mode']) && $_SESSION['advanced_mode'] == true){
               </div>
             </div>
           </div>
+          <br>
+          <div class="row">
+            <div class="col">
+              <?php include($racine_path."src/templates/form/toggle-dhcp.php");?>
+            </div>
+            <div class="col">
+              <p>Status DHCP</p>
+              <div class="card">
+                <div class="col d-flex align-items-center gap-2">
+                  <p class="config-info mb-0">
+                    DHCP
+                  </p>
 
+                  <div style="
+                    width: 15px;
+                    height: 15px;
+                    background: <?php echo ($dhcpStatus == "1") ? 'green' : 'red'; ?>;
+                    border-radius: 50%;
+                  "></div>
+                </div>
+              </div>
+            </div>
+          </div>
           <br>
           <div class ="row">
             <div class="col">

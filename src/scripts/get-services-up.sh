@@ -33,12 +33,6 @@ else
   echo "DNS=0|"
 fi
 
-if systemctl is-active --quiet "minecraft"; then
-  echo "Server Minecraft=1|"
-else
-  echo "Server Minecraft=0|"
-fi
-
 if systemctl is-active --quiet "teamspeak"; then
   echo "Server Teamspeak=1"
 else

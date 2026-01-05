@@ -20,7 +20,11 @@ document.getElementById('test-debit').addEventListener('click', function() {
       `;
     })
     .catch(error => {
-      resultDiv.textContent = 'Error running test.';
+      resultDiv.innerHTML = `
+      <div class="mt-2 mb-2 alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Erreur.</strong> Ne quittez pas la page pendant le test.
+      </div>
+      `;
       console.error('Fetch error:', error);
     });
 });

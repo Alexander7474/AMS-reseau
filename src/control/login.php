@@ -18,6 +18,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset($
   if($user->connect()){
     header('Location: /index.php');
     exit;
+  }else{
+    $errorLogin = "Utilisateur ou mot de passe incorrect.";
   }
 }
 

@@ -23,7 +23,7 @@
         <p>Liste des sous domaines ajouté(s)</p>
         <div class="card">
         <?php 
-          foreach ($subdomains as $sub){
+        foreach ($subdomains as $sub){
           $name = explode('/', $sub)[0];
           $ip = explode('/', $sub)[1];
           $name = preg_replace('/\s+/u', '', $name);

@@ -68,6 +68,7 @@ options {
     allow-recursion { any; };
 
     forwarders {
+        10.10.10.1;
         8.8.8.8;
         8.8.4.4;
     };
