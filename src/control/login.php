@@ -9,8 +9,6 @@ if (!empty($_SESSION['authenticated'])) {
 
 $racine_path = "../../";
 
-// TODO -- Donner une utilité au bouton Annuler dans les formulaire
-
 include $racine_path."src/model/User.php";
 
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset($_POST['password'])){

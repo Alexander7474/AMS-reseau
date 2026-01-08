@@ -14,7 +14,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_ip'])){
   $networkConfig = '/etc/network/interfaces';
   $tempConfig = $racine_path.'src/tmp/interfaces.temp';
 
-  // TODO -- empêcher les mauvaises entrées
   $newIp = "192.168.".$_POST["ip3"].".".$_POST["ip4"];
   $newMask = "255.255.".$_POST["mask3"].".".$_POST["mask4"];
 
