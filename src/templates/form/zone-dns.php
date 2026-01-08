@@ -17,5 +17,6 @@
         <button type="reset" class="mybtn mybtn-secondary">Annuler</button>
         <button type="submit" class="mybtn mybtn-primary" name="submit_zone_dns">Enregistrer</button>
       </div>
+<?php if(isset($errorDnsZone)){ $error = $errorDnsZone; include $racine_path."src/templates/error.php"; }?>
   </form>
 </div>

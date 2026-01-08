@@ -7,6 +7,14 @@
       <div class="col">
         <p>Test de débit</p>
         <div class="card" id="debit">
+        <div class="mt-2 mb-2 alert alert-info alert-dismissible fade show" role="alert">
+<?php
+foreach ($histDebit->tests as $t) {
+  echo '
+    <strong>Test du: '.$t->date.'.</strong> Download speed: '.$t->result->dlSpeed.' MiBps. Upload speed '.$t->result->upSpeed.'MiBps.<br>';
+}
+?>
+        </div>
           <?php include($racine_path."src/templates/form/debit.php");?>
         </div>
       </div>
@@ -83,8 +91,22 @@ if(isset($_SESSION['advanced_mode']) && $_SESSION['advanced_mode'] == true){
       <div class="col">
         <p>Liste des ip bloquées</p>
         <div class="card">
-          TODO         
-       </div>
+         <?php 
+        foreach ($ipBlocked as $sub){
+          if(!strpos($sub, "/")) { echo "Aucune"; break; }
+          $sub = explode(":", $sub)[1];
+          echo '
+          <form method="POST">
+            <div class="button-group">
+              <p class="config-info">'.$sub.'</p>
+              <input type="text" value="'.$sub.'" name="ip" hidden>
+              <button type="submit" class="mybtn mybtn-secondary" name="rm_ip_block">Supprimer</button>
+            </div>
+          </form>
+          ';
+        }
+        ?>           
+        </div>
       </div>
 <?php 
 }

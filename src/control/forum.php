@@ -12,6 +12,7 @@ include $racine_path."src/model/Database.php";
 include $racine_path."src/model/Message.php";
 include $racine_path."src/model/Subject.php";
 include $racine_path."src/model/forum-config.php";
+include $racine_path."src/model/Validator.php";
 
 $database = new Database($host, $dbname, $user, $pass);
 $messageDb = new Message($database->getConnection());
@@ -23,7 +24,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_message']) && i
   $pseudo = $_POST['pseudo'];
   $subjectId = $_GET['subject_id'];
 
-  $messageDb->create($content, $pseudo, $subjectId);
+  if(Validator::isSafeString($content) && Validator::isSafeString($pseudo)){
+    $messageDb->create($content, $pseudo, $subjectId);
+  }else{
+    $errorForum = "Contenue du message ou pseudo invalide/non sécurisé";
+  }
 }
 
 // ajout d'un sujet 
@@ -32,8 +37,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_subject'])){
   $pseudo = $_POST['pseudo'];
   $title = $_POST['title'];
 
-  $subjectId = $subjectDb->create($title, $pseudo);
-  $messageDb->create($content, $pseudo, $subjectId);
+  if(Validator::isSafeString($content) && Validator::isSafeString($pseudo) && Validator::isSafeString($title)){
+    $subjectId = $subjectDb->create($title, $pseudo);
+    $messageDb->create($content, $pseudo, $subjectId);
+  }else{
+    $errorForum = "Contenue du message/pseudo/titre invalide ou non sécurisé";
+  }
 }
   
 include($racine_path."src/templates/header.php");

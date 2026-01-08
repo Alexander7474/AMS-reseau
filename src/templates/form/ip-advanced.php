@@ -24,9 +24,9 @@
         <span class="separator">.</span>
         <input type="number" class="ip-byte" name="mask2" min="0" max="255" value="255" readonly>
         <span class="separator">.</span>
-        <input type="number" class="ip-byte" name="mask3" min="0" max="255" value="<?php echo $mask3; ?>" readonly>
+        <input type="number" class="ip-byte" name="mask3" min="0" max="255" value="<?php echo $mask3; ?>" required>
         <span class="separator">.</span>
-        <input type="number" class="ip-byte" name="mask4" min="0" max="255" value="<?php echo $mask4; ?>" readonly>
+        <input type="number" class="ip-byte" name="mask4" min="0" max="255" value="<?php echo $mask4; ?>" required>
         <button type="button" class="mybtn mybtn-info" onclick='infoBox("Le masque de sous-réseau permet de déterminer l&#39;adresse du réseau à partir de celle de votre box. ", "mask-form", "https://fr.wikipedia.org/wiki/Internet_Protocol")'>?</button>
       </div>
     </div>

@@ -1,4 +1,7 @@
 <?php
+/**
+ * @brief Gère l'uilisateur stocké dans config/user.json, cette classe n'utilise pas de base de données
+ */
 class User
 {
   public $username;

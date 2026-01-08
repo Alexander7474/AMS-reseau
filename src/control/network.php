@@ -3,6 +3,7 @@ session_start();
 $racine_path = "../../";
 
 include $racine_path."src/model/User.php";
+include $racine_path."src/model/Validator.php";
 // refuse l'accès au utilisateur non connecté
 User::checkIfConnected();
 
@@ -36,19 +37,23 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_ip'])){
     $section[] = $message;
   }
 
-  file_put_contents($tempConfig, $section);
+  if(Validator::isValidIp($newIp) && Validator::isValidIp($newMask)){
+    file_put_contents($tempConfig, $section);
 
-  // mise a jour de eth1
-  $output = shell_exec("sudo /var/www/html/src/scripts/cfg-eth1.sh");
+    // mise a jour de eth1
+    $output = shell_exec("sudo /var/www/html/src/scripts/cfg-eth1.sh");
 
-  // changement d'ip pour le sousdomaine box 
-  shell_exec("sudo /var/www/html/src/scripts/rm-subdomain.sh box");
-  shell_exec("sudo /var/www/html/src/scripts/add-subdomain.sh box ".$newIp);
+    // changement d'ip pour le sousdomaine box 
+    shell_exec("sudo /var/www/html/src/scripts/rm-subdomain.sh box");
+    shell_exec("sudo /var/www/html/src/scripts/add-subdomain.sh box ".$newIp);
+  }
 }
 
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_dhcp'])){
-  $dhcpClient = $_POST["dhcp_client"];
-  $output = shell_exec("sudo /var/www/html/src/scripts/cfg-dhcp.sh ".$dhcpClient); // TODO-- sanitize user entry (report 001) unpached
+  $dhcpClient = intval($_POST["dhcp_client"]);
+  if(Validator::isIntBet($dhcpClient, 1, 65535)){
+    shell_exec("sudo /var/www/html/src/scripts/cfg-dhcp.sh ".$dhcpClient);
+  }
 }
 
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_dhcp_advanced'])){
@@ -58,12 +63,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_dhcp_advanced']
   if(isset($_POST["conflict_detection"]) && $_POST['conflict_detection'] == "ok"){
     $pingCheck = "true";
   }
-  $output = shell_exec("sudo /var/www/html/src/scripts/cfg-dhcp-advanced.sh ".$rangeA." ".$rangeB." ".$pingCheck);
+
+  if(Validator::isValidIp($rangeA) && Validator::isValidIp($rangeB)){
+    shell_exec("sudo /var/www/html/src/scripts/cfg-dhcp-advanced.sh ".$rangeA." ".$rangeB." ".$pingCheck);
+  }
 }
 
 // reset default 
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_reset'])){
-  $output = shell_exec("sudo /var/www/html/src/scripts/cfg-dhcp.sh 250");
+  shell_exec("sudo /var/www/html/src/scripts/cfg-dhcp.sh 250");
 }
 
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_toggle_dhcp'])){

@@ -5,6 +5,14 @@ Creation d'une box internet dans le cadre de l'AMS réseau
 
 isc-dhcp-server
 bind9
+apache2
+nmap
 
+# Service installé FAI server 
+
+isc-dhcp-server
+bind9
+sql
+postfix
 
 # TODO

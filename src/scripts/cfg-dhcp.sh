@@ -51,7 +51,7 @@ echo "# For eth1: ${box_addr}: " >> /etc/dhcp/dhcpd.conf
 echo "" >> /etc/dhcp/dhcpd.conf 
 echo "default-lease-time 600;" >> /etc/dhcp/dhcpd.conf 
 echo "max-lease-time 7200;" >> /etc/dhcp/dhcpd.conf 
-echo "ping-check ${3};" >> /etc/dhcp/dhcpd.conf 
+echo "ping-check false;" >> /etc/dhcp/dhcpd.conf 
 echo "" >> /etc/dhcp/dhcpd.conf 
 echo "ddns-update-style interim;" >> /etc/dhcp/dhcpd.conf 
 echo "ignore client-updates;" >> /etc/dhcp/dhcpd.conf 

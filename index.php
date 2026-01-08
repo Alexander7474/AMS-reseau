@@ -13,9 +13,9 @@ $ip = $output[0];
 $mask = $output[1];
 $network = $output[2];
 
-// TODO -- trouver un meilleur moyen qu'un scan nmap pour déterminer les host connéctés
-//$output = shell_exec("/var/www/html/src/scripts/get-hosts-up.sh ".$network." ".$mask);
-$hosts = [];//explode('|' , $output);
+// TODO -- trouver un meilleur moyen qu'un scan nmap pour déterminer les host connectés
+$output = shell_exec("/var/www/html/src/scripts/get-hosts-up.sh ".$network." ".$mask);
+$hosts = explode('|' , $output);
 foreach ($hosts as &$host) {
   $host = explode('/', $host);
 }

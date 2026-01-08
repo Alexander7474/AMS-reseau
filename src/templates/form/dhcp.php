@@ -5,7 +5,7 @@
     <div class="form-group">
         <label class="form-label">Nombre de machine sur le réseau</label>
         <div class="ip-input-group">
-            <input type="number" class="ip-byte" name="dhcp_client" min="1" max="65536" value="1" required>
+            <input type="number" class="ip-byte" name="dhcp_client" min="1" max="65535" value="1" required>
         </div>
     </div>
     <!-- Boutons d'action -->

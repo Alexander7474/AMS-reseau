@@ -16,5 +16,6 @@
       <button type="reset" class="mybtn mybtn-secondary">Annuler</button>
       <button type="submit" class="mybtn mybtn-primary" name="submit_message">Répondre</button>
     </div>
+<?php if(isset($errorForum)){ $error = $errorForum; include $racine_path."src/templates/error.php"; }?>
   </form>
 </div>

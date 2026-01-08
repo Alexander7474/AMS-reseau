@@ -1,4 +1,8 @@
 <?php 
+// Cette page a pour unique but de renvoyer des données de débit
+// à la requête ajax de la page safety.php.
+// Le suivi des données est stocké dans config/hist_debit.json
+
 session_start();
 $racine_path = "../../";
 
@@ -60,6 +64,23 @@ ftp_close($conn);
 $speedMiBps = $sizeMiB / (array_sum($times) / count($times));
 
 $dlSpeed = round($speedMiBps,2);
-$result = ["dlSpeed" => $dlSpeed, "upSpeed" => $upSpeed];
 
-echo json_encode($result);
+// gestion de l'historique des tests
+$hist = file_get_contents($racine_path."src/config/hist_debit.json");
+$histDebit = json_decode($hist);
+
+$test = [
+  "date" => date("d/m/Y H:i"),
+  "result" => [
+    "dlSpeed" => $dlSpeed,
+    "upSpeed" => $upSpeed
+  ]
+];
+
+array_push($histDebit->tests, $test);
+
+file_put_contents($racine_path."src/config/hist_debit.json",json_encode($histDebit));
+
+$result = ["dlSpeed" => $dlSpeed, "upSpeed" => $upSpeed];
+$result = json_encode($result);
+echo $result;
