@@ -1,23 +1,35 @@
-formulaire pour changer l'ip
-formulaire de configuration du reseau/DHCP 
-formulaire config DNS
-option de test de debit
-
-script => interaction direct avec les services et la machine
-php => formulaire et edition de fichier
-
-
-
-
 pour le rapport:
 ->contexte
 ->intro = positionnement du travail par rapport a un probleme
 ->service proposé
 ->conclure (perspective au second semestre)
-
+->rajouter de l'historicité du travail
+->montrer la prise de rsule sur les problèmes
+->Des données numérique pour valoriser le travail
+->use case pour l'interface
 
 parler des idées non implémentés
 faire des captures d'écran (pas trop)
 
-TODO -- ajouter un script d'installation one shot(config sudoer, installation des packet, config server web, etc...)
+pour presentation : 
+-> Présentation du cadr du projet
+-> Données chiffré et source
+-> Documentation technique utilisé
 
+TODO -- Faire un graph pour le debit
+TODO -- Service mail
+TODO -- Control parental (bloquer les contenus en fonction d'un score de safety, plage horaire) 
+TODO -- Sauvegarde des configurations et possibilité de rollback
+TODO -- Limiter le débit pour certaines machines
+TODO -- faire des tests automatique de debit avec des alerts en cas de problèmes
+TODO -- Serveur minecraft / teamspeak
+TODO -- ajouter un script d'installation one shot(config sudoer, installation des packet, config server web, etc...)
+TODO -- Hébergement de page web automatique
+TODO -- script javascript qui test la config avancé actuelle et informe l'utilisateur sur sa validité
+TODO -- Possibilité de créer de compte en plus
+	+ Gérer le forum avec ces compte comme utilisateur avec domaine de la box pour éviter les doublons
+TODO -- traiter l'historique de tests de debit pour détécter des récurrences, les config qui baisse le débit, quelle utilisateur encombre le réseau, etc... (et faire des suggestion pour l'améliorer)
+TODO -- Serveur VPN 
+TODO -- Récapitulatif des modifications entre chaque sauvegarde
+TODO -- Traitement des questions du forum pour donner à l'utilisateur des topics déjà existant qui peuvent le concerner.
+TODO -- changer la langue de la box dans les paramètres

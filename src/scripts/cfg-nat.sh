@@ -13,6 +13,7 @@ if ! [[ $1 =~ $re ]] ; then
 fi
 
 echo $1 > /proc/sys/net/ipv4/ip_forward
+sudo ip route add default via 10.10.10.1 dev eth2
 
 # ajout de règles de routage
 if (( $1 == 1 ));then 

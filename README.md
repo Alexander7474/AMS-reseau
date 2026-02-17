@@ -1,8 +1,6 @@
 # AMS-reseau
 Creation d'une box internet dans le cadre de l'AMS réseau
 
-Des screenshots des l'interface de la box sont disponnibles dans le dossier "screen/"
-
 # Service installé sur la box
 
 isc-dhcp-server
@@ -14,9 +12,7 @@ nmap
 
 isc-dhcp-server
 bind9
-mysql
+sql
 postfix
 
 # TODO
-
-```grep -R 'TODO --' .```
