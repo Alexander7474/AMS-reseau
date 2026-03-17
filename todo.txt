@@ -16,11 +16,8 @@ pour presentation :
 -> Données chiffré et source
 -> Documentation technique utilisé
 
-TODO -- Faire un graph pour le debit
-TODO -- Service mail
 TODO -- Control parental (bloquer les contenus en fonction d'un score de safety, plage horaire) 
 TODO -- Sauvegarde des configurations et possibilité de rollback
-TODO -- Limiter le débit pour certaines machines
 TODO -- faire des tests automatique de debit avec des alerts en cas de problèmes
 TODO -- Serveur minecraft / teamspeak
 TODO -- ajouter un script d'installation one shot(config sudoer, installation des packet, config server web, etc...)
@@ -35,8 +32,7 @@ TODO -- Traitement des questions du forum pour donner à l'utilisateur des topic
 TODO -- changer la langue de la box dans les paramètres
 
 
-
-
+LE PLUS IMPORTANT ----------------------------------------------------------
 
 Traitement:
 
@@ -48,3 +44,17 @@ Traiter les fichier de configuration sauvegardé pour déterminer différent fac
 	-> L'utilisation des usagers
 	-> Recherche de solution automatique sur le forum
 Toutes ces infos seront disponnible dans un panneau de bord.
+
+
+----------------------------------------------------------------------------
+
+Ajouter des comptes utilisateurs qui peuvent envoyer des mails mais n'ont pas accès a la config de la box 
+
+Ajouter un id a chaque box qui la lie à un nom pour le forum et le dns du fai 
+
+----------------------------------------------------------------------------
+
+Gestion de l'accès à internet:
+
+intégrer des plage d'accès a internet custom en fonction d'une address mac
+Limiter le debit en fonction de l'address mac
