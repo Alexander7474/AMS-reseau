@@ -3,7 +3,9 @@ session_start();
 $racine_path = "../../";
 
 include $racine_path."src/model/User.php";
+include $racine_path."src/model/Graph.php";
 include $racine_path."src/model/Validator.php";
+include $racine_path."src/model/charts4php/inc/chartphp_dist.php";
 // refuse l'accès au utilisateur non connecté
 User::checkIfConnected();
 
@@ -27,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_port_forward'])
 }
 
 if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['rm_forward'])){
-  $port = $_POST['port'];
+  $port = intval($_POST['port']);
   if(Validator::isIntBet($port, 1 ,65535)){
     shell_exec("sudo /var/www/html/src/scripts/rm-port-forward.sh ".$port);
   }

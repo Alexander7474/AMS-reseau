@@ -33,3 +33,18 @@ TODO -- Serveur VPN
 TODO -- Récapitulatif des modifications entre chaque sauvegarde
 TODO -- Traitement des questions du forum pour donner à l'utilisateur des topics déjà existant qui peuvent le concerner.
 TODO -- changer la langue de la box dans les paramètres
+
+
+
+
+
+Traitement:
+
+Traiter les fichier de configuration sauvegardé pour déterminer différent facteur comme:
+	-> La qualité du réseau
+	-> La sécurité
+	-> Détéction d'anomalie
+	-> Alerte sur des paramètre pottentielement dangereux
+	-> L'utilisation des usagers
+	-> Recherche de solution automatique sur le forum
+Toutes ces infos seront disponnible dans un panneau de bord.

@@ -7,14 +7,28 @@
       <div class="col">
         <p>Test de débit</p>
         <div class="card" id="debit">
-        <div class="mt-2 mb-2 alert alert-info alert-dismissible fade show" role="alert">
 <?php
+$dates = [];
+$download = [];
+$upload = [];
+
 foreach ($histDebit->tests as $t) {
-  echo '
-    <strong>Test du: '.$t->date.'.</strong> Download speed: '.$t->result->dlSpeed.' MiBps. Upload speed '.$t->result->upSpeed.'MiBps.<br>';
+    $dates[] = $t->date;
+    $download[] = $t->result->dlSpeed;
+    $upload[] = $t->result->upSpeed;
 }
+echo Graph::render([
+        [
+                'label' => 'Download speed',
+                'data' => $download,
+                'color' => '#3b82f6'
+        ],
+        [
+                'label' => 'Upload speed',
+                'data' => $upload,
+                'color' => '#008448'
+        ]], $dates);
 ?>
-        </div>
           <?php include($racine_path."src/templates/form/debit.php");?>
         </div>
       </div>
@@ -114,3 +128,4 @@ if(isset($_SESSION['advanced_mode']) && $_SESSION['advanced_mode'] == true){
     </div>
   </div>    
 </main>
+
