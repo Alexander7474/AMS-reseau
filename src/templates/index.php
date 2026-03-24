@@ -35,9 +35,9 @@
         <div class="card">
           <?php 
           foreach ($hosts as $host){
-            $hname = $host[1];
+            $hname = $host["name"];
             $hname = preg_replace('/\s+/u', '', $hname);
-            $hip = $host[0];
+            $hip = $host["addr"];
             if($hip == $ip){
               echo '
               <p class="config-info">'.$hip.' (hostname: '.$hname.') MyBox</p>

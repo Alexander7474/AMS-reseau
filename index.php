@@ -4,7 +4,7 @@ $racine_path = "";
 
 include $racine_path."src/model/User.php";
 // refuse l'accès au utilisateur non connecté
-//User::checkIfConnected();
+User::checkIfConnected();
 
 //recup des hosts connexté au réseau
 $output = shell_exec("/var/www/html/src/scripts/get-ip.sh");
@@ -13,13 +13,9 @@ $ip = $output[0];
 $mask = $output[1];
 $network = $output[2];
 
-// TODO -- trouver un meilleur moyen qu'un scan nmap pour déterminer les host connectés
-//$output = shell_exec("/var/www/html/src/scripts/get-hosts-up.sh ".$network." ".$mask);
-//$hosts = explode('|' , $output);
-//foreach ($hosts as &$host) {
-  //$host = explode('/', $host);
-//}
-//unset($host);
+// Fichier hosts.json mis a jour par le crownjob get-hosts-up.sh 
+$json = file_get_contents($racine_path.'src/config/hosts.json');
+$hosts = json_decode($json, true)["hosts"]; // true = associative array
 
 // recup des services en marche 
 $services = shell_exec("/var/www/html/src/scripts/get-services-up.sh");

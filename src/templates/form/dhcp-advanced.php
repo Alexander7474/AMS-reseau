@@ -32,8 +32,8 @@
 
     <div class="form-group" id="dhcp-conflict">
       <div class="form-check">
-        <input class="form-check-input mt-2" type="checkbox" id="flexCheckDefault" value="ok" name="conflict_detection" <?php if ($conflictDetection == "1") { echo "checked"; }?>>
-        <label class="form-check-label" for="flexCheckDefault">
+        <input class="form-check-input mt-2" type="checkbox" id="conflictDetect" value="ok" name="conflict_detection" <?php if ($conflictDetection == "1") { echo "checked"; }?>>
+        <label class="form-check-label" for="conflictDetect">
           Détection de conflit d'addresse
         </label>
         <button type="button" class="mybtn mybtn-info" onclick='infoBox("Le server DHCP va ping une addresse avant de l&#39;attribuer pour vérifier qu&#39;elle est disponnible. Cette option peut avoir un impact sur les performances. ", "dhcp-conflict", "https://fr.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol")'>?</button>
