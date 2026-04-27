@@ -126,6 +126,7 @@ if(isset($_SESSION['advanced_mode']) && $_SESSION['advanced_mode'] == true){
 }
 ?>
     </div>
+<?php include($racine_path."src/templates/mac_filter.php"); ?>
   </div>    
 </main>
 

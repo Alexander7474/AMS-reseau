@@ -219,3 +219,60 @@ p {
   background-color: white; 
   color: #5F6869;
 }
+
+.schedule-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 3px;
+    table-layout: fixed;
+}
+.schedule-table th {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #7f8c8d;
+    padding: 6px 2px;
+    white-space: nowrap;
+}
+.schedule-table th.hour-col {
+    width: 42px;
+    text-align: right;
+    padding-right: 8px;
+}
+.schedule-table td.hour-label {
+    font-size: 11px;
+    color: #7f8c8d;
+    text-align: right;
+    padding-right: 8px;
+    white-space: nowrap;
+    font-family: monospace;
+}
+ 
+.slot-cell {
+    padding: 0;
+    text-align: center;
+}
+.slot-cell input[type="checkbox"] {
+    display: none;
+}
+.slot-cell label {
+    display: block;
+    height: 24px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid #e0e0e0;
+    background: #d4edda; /* vert clair Bootstrap-like */
+    transition: filter .15s, transform .1s;
+    margin: 0;
+}
+.slot-cell input[type="checkbox"]:checked + label {
+    background: #f8d7da; /* rouge clair Bootstrap-like */
+    border-color: #f5c6cb;
+}
+.slot-cell label:hover {
+    filter: brightness(.9);
+    transform: scale(1.08);
+    position: relative;
+    z-index: 5;
+}
+

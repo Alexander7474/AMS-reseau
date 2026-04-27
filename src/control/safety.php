@@ -62,6 +62,96 @@ $ipBlocked = explode('|', shell_exec("sudo /var/www/html/src/scripts/get-ip-bloc
 $hist = file_get_contents($racine_path."src/config/hist_debit.json");
 $histDebit = json_decode($hist);
 
+$script       = '';
+$form_message = '';
+$form_success = false;
+ 
+$days = ['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'];
+
+$actual_filter = shell_exec('sudo /var/www/html/src/scripts/manage_mac_filter.sh show 2>/dev/null');
+$filter_data   = json_decode($actual_filter, true) ?: [];
+
+$hosts_file  = '/var/www/html/src/config/hosts.json';
+$hosts_by_mac = [];
+if (file_exists($hosts_file)) {
+    $hosts_json = json_decode(file_get_contents($hosts_file), true);
+    foreach ($hosts_json['hosts'] ?? [] as $host) {
+        if (!empty($host['mac'])) {
+            $mac = strtolower(trim($host['mac']));
+            $hosts_by_mac[$mac] = [
+                'name' => $host['name'] ?? $host['addr'] ?? $mac,
+                'addr' => $host['addr'] ?? '',
+            ];
+        }
+    }
+}
+ 
+$macs_filter_only = [];
+foreach ($filter_data as $day => $hours) {
+    foreach ($hours as $hour => $macs) {
+        foreach ($macs as $mac) {
+            $mac = strtolower(trim($mac));
+            if (!isset($hosts_by_mac[$mac]) && !in_array($mac, $macs_filter_only)) {
+                $macs_filter_only[] = $mac;
+            }
+        }
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["selected_mac"])) {
+ 
+    $mac   = $_POST['selected_mac'];
+    $slots = $_POST['slots'] ?? [];
+ 
+    if (!filter_var($mac, FILTER_VALIDATE_MAC)) {
+        $form_message = 'Adresse MAC invalide. mac='.$mac;
+        $form_success = false;
+    } else {
+        $errors = 0;
+ 
+        foreach ($days as $day) {
+            for ($h = 0; $h <= 23; $h++) {
+                $should_block = isset($slots[$day][$h]);
+                $current_macs = array_map('strtolower', $filter_data[$day][$h] ?? []);
+                $is_blocked   = in_array($mac, $current_macs);
+ 
+                if ($should_block && !$is_blocked) {
+                    $out = shell_exec(
+                        escapeshellcmd('sudo /var/www/html/src/scripts/manage_mac_filter.sh')
+                        . ' add '
+                        . escapeshellarg($day) . ' '
+                        . intval($h) . ' '
+                        . escapeshellarg($mac)
+                        . ' 2>&1'
+                    );
+                    if (strpos($out, 'OK') === false && strpos($out, 'déjà') === false) $errors++;
+ 
+                } elseif (!$should_block && $is_blocked) {
+                    $out = shell_exec(
+                        escapeshellcmd('sudo /var/www/html/src/scripts/manage_mac_filter.sh')
+                        . ' remove '
+                        . escapeshellarg($day) . ' '
+                        . intval($h) . ' '
+                        . escapeshellarg($mac)
+                        . ' 2>&1'
+                    );
+                    if (strpos($out, 'OK') === false && strpos($out, "n'est pas") === false) $errors++;
+                }
+            }
+        }
+ 
+        /* Recharge la config après modifications */
+        $actual_filter = shell_exec('sudo /var/www/html/src/scripts/manage_mac_filter.sh show 2>/dev/null');
+        $filter_data   = json_decode($actual_filter, true) ?: [];
+ 
+        $form_success = ($errors === 0);
+        $form_message = $form_success
+            ? 'Configuration appliquée pour ' . htmlspecialchars($mac) . '.'
+            : $errors . ' erreur(s) lors de l\'application. Vérifiez les logs.';
+    }
+}
+
+
 include($racine_path."src/templates/header.php");
 include($racine_path."src/templates/navigation.php");
 include($racine_path."src/templates/safety.php");
