@@ -17,6 +17,12 @@ class Subject {
         return $stmt->execute(['id' => $id]);
     }
 
+    public function get($id) {
+        $stmt = $this->pdo->prepare("SELECT * FROM subjects WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function getAll() {
         $stmt = $this->pdo->query("SELECT * FROM subjects ORDER BY id ASC");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

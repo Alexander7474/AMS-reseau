@@ -5,6 +5,7 @@
 
   <div class="container">
     <div class="card">
+        <h3><?= $title ?></h3>
 <?php
 if(isset($messages)){
   foreach ($messages as $m) {

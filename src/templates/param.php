@@ -45,6 +45,11 @@
                 <?php endforeach; ?>
                 <?php foreach ($s["infos"] as $i): ?>
                         <li class="text-info">ℹ <?= htmlspecialchars($i) ?></li>
+                <?php endforeach; ?>
+                <?php foreach ($s["related_subjects"] as $r): ?>
+                        <a style="text-decoration: none;" href="forum.php?subject_id=<?= $r['id'] ?>">
+                        <li class="text-secondary">Sujet du forum utile : <?= htmlspecialchars($r['title']) ?></li>
+                        </a>
                 <?php endforeach; 
                 if(count($s["warnings"]) == 0 && count($s["dangers"]) == 0){
                         echo '<li class="text-success">✔ Cette configurations correspond à vos besoins</li>';

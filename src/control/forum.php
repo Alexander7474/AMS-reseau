@@ -51,6 +51,7 @@ if(isset($_GET['subject_id'])){
   $subjectId = $_GET['subject_id'];
 
   $messages = $messageDb->getBySubject($subjectId);
+  $title = $subjectDb->get($subjectId)['title'];
   include($racine_path."src/templates/forum_messages.php");
 }else{
   $subjects = $subjectDb->getAll();
